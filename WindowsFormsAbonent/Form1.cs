@@ -1,4 +1,6 @@
 ﻿using Abonent;
+using MongoDB.Bson;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -129,6 +131,62 @@ namespace WindowsFormsAbonent
             dataGridViewDisrepair.DataSource = mongoDBConnect.Load_DataDisrepair();
         }
 
+        private void contextMenuStrip2_Opening(object sender, CancelEventArgs e)
+        {
 
+        }
+        private async void Filter<T>(DataGridView dataGridView, string nameOfTable)
+        {
+            int column = dataGridView.SelectedCells[0].OwningColumn.Index;
+            string nameOfColumn = dataGridView.Columns[column].Name;
+            var filterForm = new FilterRegexForm();
+            filterForm.ShowDialog();
+            dataGridView.DataSource = await mongoDBConnect.FilterData<T>(nameOfColumn, filterForm.Mask, nameOfTable);
+        }
+        private async void фильтроватьToolStripMenuItem_ClickAsync(object sender, EventArgs e)
+        {
+            if (tabPageRequest.CanFocus)
+            {
+                if(dataGridViewRequest.Rows.Count!=0)
+                {
+                    //int column = dataGridViewRequest.SelectedCells[0].OwningColumn.Index;
+                    //string nameOfColumn = dataGridViewRequest.Columns[column].Name;
+                    //var filterForm = new FilterRegexForm();
+                    //filterForm.ShowDialog();
+                    //dataGridViewRequest.DataSource = await mongoDBConnect.FilterData<Class_Request>(nameOfColumn, filterForm.Mask);
+                    Filter<Class_Request>(dataGridViewRequest, "Request");
+                }
+            }
+            else if (tabPageExecutor.CanFocus)
+            {
+                if (dataGridViewExecutor.Rows.Count != 0)
+                {
+                    Filter<Class_Executor>(dataGridViewExecutor, "Executor");
+                }
+            }
+            else if (tabPageDisrepair.CanFocus)
+            {
+                if (dataGridViewDisrepair.Rows.Count != 0)
+                {
+                    Filter<Class_Disrepair>(dataGridViewDisrepair, "Disrepair");
+                }
+            }
+        }
+
+        private void обновитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (tabPageRequest.CanFocus)
+            {
+                updateRequests();
+            }
+            else if (tabPageExecutor.CanFocus)
+            {
+                updateExecutors();
+            }
+            else if (tabPageDisrepair.CanFocus)
+            {
+                updateDisrepairs();
+            }
+        }
     }
 }

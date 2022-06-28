@@ -63,7 +63,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(640, 360);
+            this.ClientSize = new System.Drawing.Size(818, 360);
             this.Controls.Add(this.buttonEditDisrepair);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxFAILURENM);

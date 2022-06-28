@@ -11,6 +11,7 @@ using MongoDB.Driver.Builders;
 using MongoDB.Bson;
 using MongoDB_Base;
 using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace WindowsFormsAbonent
 {
@@ -190,7 +191,7 @@ namespace WindowsFormsAbonent
         {
             MongoServerSettings Settings_;
             MongoServer server;
-            MongoDatabase Database_;
+            public MongoDatabase Database_;
             public static MongoDB_Class _Obj;
             public static MongoDB_Class GetObject()
             {
@@ -199,6 +200,18 @@ namespace WindowsFormsAbonent
                     _Obj = new MongoDB_Class();
                 }
                 return _Obj;
+            }
+
+            public async Task<List<T>> FilterData<T>(string columnName, string regexExp, string nameOfTable)
+            {
+                var Settings_ = new MongoClientSettings();
+                Settings_.Server = new MongoServerAddress("localhost", 27017);
+                var client = new MongoClient(Settings_);
+                var Database_ = client.GetDatabase("test");
+                var collection = Database_.GetCollection<T>(nameOfTable);
+                var filterRegex = Builders<T>.Filter.Regex(columnName, new BsonRegularExpression(regexExp));
+                var requiredCollection = await collection.Find(filterRegex).ToListAsync();
+                return requiredCollection;
             }
 
             public MongoDB_Class()

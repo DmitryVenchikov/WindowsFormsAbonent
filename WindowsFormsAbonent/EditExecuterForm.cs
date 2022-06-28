@@ -16,10 +16,12 @@ namespace WindowsFormsAbonent
         private readonly MongoDB_Class mongo;
         private readonly int executorId;
         private Class_Executor executor;
+
         public EditExecutorForm(MongoDB_Class mongo, int id)
         {
             this.mongo = mongo;
             executorId = id;
+           
             InitializeComponent();
         }
 

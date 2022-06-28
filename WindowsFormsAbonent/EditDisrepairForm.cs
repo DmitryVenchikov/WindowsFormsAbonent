@@ -21,10 +21,11 @@ namespace WindowsFormsAbonent
             this.mongo = mongo;
             Id = id;
             InitializeComponent();
+
         }
         private void buttonEditDisrepair_Click(object sender, EventArgs e)
         {
-          
+            
             disrepair.FAILURENM = textBoxFAILURENM.Text;
             mongo.Update_Disrepair_Information(disrepair);
             MessageBox.Show("Данные успешно обновлены");
