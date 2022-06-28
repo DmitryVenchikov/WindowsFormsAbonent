@@ -29,8 +29,6 @@ namespace WindowsFormsAbonent
             dataGridViewRequest.ContextMenuStrip = contextMenuStrip2;
             dataGridViewExecutor.ContextMenuStrip = contextMenuStrip2;
             dataGridViewDisrepair.ContextMenuStrip = contextMenuStrip2;
-
-          //  this.ИзменитьToolStripMenuItem2.Click += new System.EventHandler(this.изменитьToolStripMenuItem2_Click);
         }
 
         private void dataGridViewRequest_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -65,26 +63,34 @@ namespace WindowsFormsAbonent
         {
             if (tabPageRequest.CanFocus)
             {
-                RequestForm editform = new RequestForm(mongoDBConnect);
-                addRequest.ShowDialog();
+                var i = dataGridViewRequest.SelectedCells[0].OwningRow.Index;
+                var id = (int)dataGridViewRequest[1, i].Value;
+                EditRequestForm editform = new EditRequestForm(mongoDBConnect, id);
+                editform.ShowDialog();
                 updateRequests();
             }
             else if (tabPageExecutor.CanFocus)
             {
-                AddExecuter addRequest = new AddExecuter(mongoDBConnect);
-                addRequest.ShowDialog();
+                var i = dataGridViewExecutor.SelectedCells[0].OwningRow.Index;
+                var id = (int)dataGridViewExecutor[1, i].Value;
+                EditExecutorForm editform = new EditExecutorForm(mongoDBConnect, id);
+                editform.ShowDialog();
                 updateExecutors();
             }
             else if (tabPageDisrepair.CanFocus)
             {
-                AddDisrepair addRequest = new AddDisrepair(mongoDBConnect);
-                addRequest.ShowDialog();
+
+                var i = dataGridViewDisrepair.SelectedCells[0].OwningRow.Index;
+                var id = (int)dataGridViewDisrepair[1, i].Value;
+                EditDisrepairForm editform = new EditDisrepairForm(mongoDBConnect, id);
+                editform.ShowDialog();
                 updateDisrepairs();
             }
         }
 
         private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
+           
             if (tabPageRequest.CanFocus)
             {
                 var i = dataGridViewRequest.SelectedCells[0].OwningRow.Index;
@@ -92,6 +98,22 @@ namespace WindowsFormsAbonent
                 mongoDBConnect.Delete_Request_Infromation(mongoDBConnect.Load_DataRequest().Where(t =>
                 t.Id == id).First());
                 updateRequests();
+            }
+            else if (tabPageExecutor.CanFocus)
+            {
+                var i = dataGridViewExecutor.SelectedCells[0].OwningRow.Index;
+                var id = (int)dataGridViewExecutor[1, i].Value;
+                mongoDBConnect.Delete_Executor_Infromation(mongoDBConnect.Load_DataExecutor().Where(t =>
+                 t.Id == id).First());
+                updateExecutors();
+            }
+            else if (tabPageDisrepair.CanFocus)
+            {
+                var i = dataGridViewDisrepair.SelectedCells[0].OwningRow.Index;
+                var id = (int)dataGridViewDisrepair[1, i].Value;
+                mongoDBConnect.Delete_Disrepair_Infromation(mongoDBConnect.Load_DataDisrepair().Where(t =>
+                t.Id == id).First());
+                updateDisrepairs();
             }
         }
         void updateRequests()

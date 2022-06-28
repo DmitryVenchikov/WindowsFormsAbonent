@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsAbonent
 {
-    public class Class_Executer
+    public class Class_Executor
     {
         [BsonId]
         public ObjectId _id { get; set; }

@@ -57,39 +57,39 @@ namespace WindowsFormsAbonent
             public string Phone { get; set; }
         }
 
-        public class Class_Disrepair
-        {
-            [BsonId]
-            public ObjectId _id { get; set; }
+        //public class Class_Disrepair
+        //{
+        //    [BsonId]
+        //    public ObjectId _id { get; set; }
 
-            [BsonElementAttribute("Id")]
-            public int Id { get; set; }
+        //    [BsonElementAttribute("Id")]
+        //    public int Id { get; set; }
 
-            [BsonElementAttribute("FAILURENM")]
-            public string FAILURENM { get; set; }
+        //    [BsonElementAttribute("FAILURENM")]
+        //    public string FAILURENM { get; set; }
 
-            public override string ToString()
-            {
-                return FAILURENM;
-            }
-        }
+        //    public override string ToString()
+        //    {
+        //        return FAILURENM;
+        //    }
+        //}
 
-        public class Class_Executor
-        {
-            [BsonId]
-            public ObjectId _id { get; set; }
+        //public class Class_Executor
+        //{
+        //    [BsonId]
+        //    public ObjectId _id { get; set; }
 
-            [BsonElementAttribute("Id")]
-            public int Id { get; set; }
+        //    [BsonElementAttribute("Id")]
+        //    public int Id { get; set; }
 
-            [BsonElementAttribute("Fio")]
-            public string Fio { get; set; }
+        //    [BsonElementAttribute("Fio")]
+        //    public string Fio { get; set; }
 
-            public override string ToString()
-            {
-                return Fio;
-            }
-        }
+        //    public override string ToString()
+        //    {
+        //        return Fio;
+        //    }
+        //}
 
         public class Class_NachislSumma
         {
@@ -142,32 +142,32 @@ namespace WindowsFormsAbonent
             public int PayYear { get; set; }
         }
 
-        public class Class_Request
-        {
-            [BsonId]
-            public ObjectId _id { get; set; }
+        //public class Class_Request
+        //{
+        //    [BsonId]
+        //    public ObjectId _id { get; set; }
 
-            [BsonElementAttribute("Id")]
-            public int Id { get; set; }
+        //    [BsonElementAttribute("Id")]
+        //    public int Id { get; set; }
 
-            [BsonElementAttribute("AccountCD")]
-            public string AccountCD { get; set; }
+        //    [BsonElementAttribute("AccountCD")]
+        //    public string AccountCD { get; set; }
 
-            [BsonElementAttribute("ExecutorCD")]
-            public string ExecutorCD { get; set; }
+        //    [BsonElementAttribute("ExecutorCD")]
+        //    public string ExecutorCD { get; set; }
 
-            [BsonElementAttribute("FailureCD")]
-            public string FailureCD { get; set; }
+        //    [BsonElementAttribute("FailureCD")]
+        //    public string FailureCD { get; set; }
 
-            [BsonElementAttribute("IncomingDate")]
-            public DateTime IncomingDate { get; set; }
+        //    [BsonElementAttribute("IncomingDate")]
+        //    public DateTime IncomingDate { get; set; }
 
-            [BsonElementAttribute("ExecutionDate")]
-            public DateTime ExecutionDate { get; set; }
+        //    [BsonElementAttribute("ExecutionDate")]
+        //    public DateTime ExecutionDate { get; set; }
 
-            [BsonElementAttribute("Executed")]
-            public bool Executed { get; set; }
-        }
+        //    [BsonElementAttribute("Executed")]
+        //    public bool Executed { get; set; }
+        //}
 
         public class Class_Services
         {

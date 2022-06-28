@@ -12,19 +12,20 @@ using static WindowsFormsAbonent.MongoDBConnect;
 
 namespace Abonent
 {
-    public partial class RequestForm : Form
+    public partial class EditRequestForm : Form
     {
         private readonly MongoDB_Class mongo;
-
-        public RequestForm(MongoDB_Class mongo)
+        private readonly int requestId;
+        Class_Request request;
+        public EditRequestForm(MongoDB_Class mongo, int id)
         {
+            requestId = id;
             this.mongo = mongo;
             InitializeComponent();
         }
 
         private void DoneBtn_Click(object sender, EventArgs e)
         {
-            var request = mongo.Load_DataRequest().Where(t => t.Id == int.Parse(IDtb.Text)).First();
             request.AccountCD = AccountCDtb.Text;
             request.ExecutorCD = executorCDtb.Text;
             request.IncomingDate = incomingDatedp.Value;
@@ -32,7 +33,19 @@ namespace Abonent
             request.FailureCD = failrueCDtb.Text;
             request.Executed = check.Checked;
             mongo.Update_Request_Information(request);
-            this.Dispose();
+            MessageBox.Show("Данные успешно обновлены");
+            this.Close();
+        }
+
+        private void EditRequestForm_Load(object sender, EventArgs e)
+        {
+            request = mongo.Load_DataRequest().Where(t => t.Id == requestId).First();
+            AccountCDtb.Text = request.AccountCD;
+            executorCDtb.Text = request.ExecutorCD;
+            incomingDatedp.Value = request.IncomingDate;
+            executionDatedp.Value = request.ExecutionDate;
+            failrueCDtb.Text = request.FailureCD;
+            check.Checked = request.Executed;
         }
     }
 }

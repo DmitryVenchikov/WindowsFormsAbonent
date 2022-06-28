@@ -27,8 +27,9 @@ namespace WindowsFormsAbonent
 
         private void buttonAddDisrepair_Click(object sender, EventArgs e)
         {
-            mongoDBConnect.Insert_Disrepair_Information(new MongoDBConnect.Class_Disrepair
+            mongoDBConnect.Insert_Disrepair_Information(new Class_Disrepair
             {
+                Id = mongoDBConnect.Load_DataDisrepair().OrderBy(t => t.Id).Last().Id + 1,
                 FAILURENM = textBoxFAILURENM.Text
             } );
             MessageBox.Show("Данные успешно добавлены");

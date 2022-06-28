@@ -22,8 +22,9 @@ namespace WindowsFormsAbonent
 
         private void buttonAddRequest_Click(object sender, EventArgs e)
         {
-            mongoDBConnect.Insert_Request_Information(new MongoDBConnect.Class_Request
+            mongoDBConnect.Insert_Request_Information(new Class_Request
             {
+                Id = mongoDBConnect.Load_DataRequest().OrderBy(t=>t.Id).Last().Id+1,
                 AccountCD = textBoxAccountCD.Text,
                 ExecutorCD = textBoxExecutorCD.Text,
                 FailureCD = textBoxFailureCD.Text,

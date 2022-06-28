@@ -22,8 +22,9 @@ namespace WindowsFormsAbonent
 
         private void buttonAddExecuter_Click(object sender, EventArgs e)
         {
-            mongoDBConnect.Insert_Executor_Information(new MongoDBConnect.Class_Executor
+            mongoDBConnect.Insert_Executor_Information(new Class_Executor
             {
+                Id = mongoDBConnect.Load_DataExecutor().OrderBy(t => t.Id).Last().Id + 1,
                 Fio = textBoxFIO.Text
             }
            ) ;

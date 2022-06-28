@@ -153,13 +153,19 @@
       <DependentUpon>AddRequest.cs</DependentUpon>
     </Compile>
     <Compile Include="Class_Disrepair.cs" />
-    <Compile Include="Class_Executer.cs" />
+    <Compile Include="Class_Executor.cs" />
     <Compile Include="Class_Request.cs" />
-    <Compile Include="EditRequest.cs">
+    <Compile Include="EditDisrepairForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditRequest.Designer.cs">
-      <DependentUpon>EditRequest.cs</DependentUpon>
+    <Compile Include="EditDisrepairForm.Designer.cs">
+      <DependentUpon>EditDisrepairForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditExecuterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditExecuterForm.Designer.cs">
+      <DependentUpon>EditExecuterForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -171,11 +177,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Request.cs" />
-    <Compile Include="RequestForm.cs">
+    <Compile Include="EditRequestForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RequestForm.designer.cs">
-      <DependentUpon>RequestForm.cs</DependentUpon>
+    <Compile Include="EditRequestForm.designer.cs">
+      <DependentUpon>EditRequestForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SBindingList.cs" />
     <EmbeddedResource Include="AddDisrepair.resx">
@@ -187,8 +193,11 @@
     <EmbeddedResource Include="AddRequest.resx">
       <DependentUpon>AddRequest.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditRequest.resx">
-      <DependentUpon>EditRequest.cs</DependentUpon>
+    <EmbeddedResource Include="EditDisrepairForm.resx">
+      <DependentUpon>EditDisrepairForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditExecuterForm.resx">
+      <DependentUpon>EditExecuterForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -202,8 +211,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="RequestForm.resx">
-      <DependentUpon>RequestForm.cs</DependentUpon>
+    <EmbeddedResource Include="EditRequestForm.resx">
+      <DependentUpon>EditRequestForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Core\Compression\Snappy\lib\linux\libsnappy64.so" />
     <None Include="Core\Compression\Snappy\lib\osx\libsnappy64.dylib" />
